@@ -1,13 +1,13 @@
-public class Main {
+public class StatementsWhiteSpaceMain {
     public static void main(String[] args) {
         int myVariable = 50;
         // myVariable = 50 is the Expression
         // the intire Line is the Statement
         myVariable++; // the Semicolon makes it an Statement
         myVariable--;
-        
-        if(myVariable === 50){
-            System.out.print(myVariable)
+
+        if (myVariable == 50) {
+            System.out.print(myVariable);
         }
 
         System.out.print("This is a test");
