@@ -7,6 +7,12 @@ public class PolymorphismChallangeMain {
 
         PolyCar ferrari = new GasPoweredCar("2022 Ferrari", 15.4, 6);
         runRace(ferrari);
+
+        PolyCar tesla = new ElectricCar("Tesla model 3", 568, 75);
+        runRace(tesla);
+
+        PolyCar toyota = new HybridCar("Toyota Prius", 4, 4, 30);
+        runRace(toyota);
     }
 
     public static void runRace(PolyCar car) {
