@@ -1,5 +1,3 @@
-import javax.swing.text.Style;
-
 public class EncapsulationMain {
     public static void main(String[] args) {
         // Player player = new Player();
