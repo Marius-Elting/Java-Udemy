@@ -8,25 +8,46 @@ public class MealOrder {
     }
 
     public MealOrder(String burgerType, String drinkType, String sideType) {
-        this.burger = new Burger(burgerType, 4.00);
+        if (burgerType.equalsIgnoreCase("deluxe")) {
+            this.burger = new DeluxeBurger(burgerType, 8.5);
+        } else {
+            this.burger = new Burger(burgerType, 4.00);
+        }
         this.drink = new Item("drink", drinkType, 1.00);
         this.side = new Item("side", sideType, 1.5);
     }
 
     public double getTotalPrice() {
-        return side.getAdjustedPrice() + drink.getAdjustedPrice() + burger.getAdjustedPrice();
+        if (burger instanceof DeluxeBurger) {
+            return burger.getAdjustedPrice();
+        } else {
+            return side.getAdjustedPrice() + drink.getAdjustedPrice() + burger.getAdjustedPrice();
+        }
     }
 
     public void printItemizedList() {
         burger.printItem();
-        drink.printItem();
-        side.printItem();
+        if (burger instanceof DeluxeBurger) {
+            Item.printItem(drink.getName(), 0);
+            Item.printItem(side.getName(), 0);
+        } else {
+            drink.printItem();
+            side.printItem();
+        }
         System.out.println("-".repeat(30));
         Item.printItem("TOTAL PRICE", getTotalPrice());
     }
 
     public void addBurgerToppings(String extra1, String extra2, String extra3) {
         burger.addToppings(extra1, extra2, extra3);
+    }
+
+    public void addBurgerToppings(String extra1, String extra2, String extra3, String extra4, String extra5) {
+        if (burger instanceof DeluxeBurger db) {
+            db.addToppings(extra1, extra2, extra3, extra4, extra5);
+        } else {
+            burger.addToppings(extra1, extra2, extra3);
+        }
     }
 
     public void setDrinkSize(String size) {
@@ -136,6 +157,41 @@ class Burger extends Item {
         printItemizedList();
         System.out.println("-".repeat(30));
         super.printItem();
+    }
+
+}
+
+class DeluxeBurger extends Burger {
+    private Item deluxe1;
+    private Item deluxe2;
+
+    public DeluxeBurger(String name, double price) {
+        super(name, price);
+    }
+
+    public void addToppings(String extra1, String extra2, String extra3, String extra4, String extra5) {
+
+        super.addToppings(extra1, extra2, extra3);
+        deluxe1 = new Item("TOPPING", extra4, 0);
+        deluxe2 = new Item("TOPPING", extra5, 0);
+    }
+
+    @Override
+    public void printItemizedList() {
+
+        super.printItemizedList();
+        if (deluxe1 != null) {
+            deluxe1.printItem();
+        }
+        if (deluxe2 != null) {
+            deluxe2.printItem();
+        }
+    }
+
+    @Override
+    public double getExtraPrice(String toppingName) {
+
+        return 0;
     }
 
 }

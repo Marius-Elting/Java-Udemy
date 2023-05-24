@@ -9,9 +9,14 @@ public class MasterChallangeMain {
         // burger.addToppings("bacon", "cheese", "mayo");
         // burger.printItem();
 
-        MealOrder order = new MealOrder("Big Burger", "coke", "fries");
-        order.addBurgerToppings("bacon", "cheese", "mayo");
-        order.setDrinkSize("large");
-        order.printItemizedList();
+        // MealOrder order = new MealOrder("Big Burger", "coke", "fries");
+        // order.addBurgerToppings("bacon", "cheese", "mayo");
+        // order.setDrinkSize("large");
+        // order.printItemizedList();
+
+        MealOrder deluxeOrder = new MealOrder("deluxe", "fanta", "chili");
+        deluxeOrder.addBurgerToppings("AVOCADO", "BACON", "LETTUCE", "CHEESE", "MAYO");
+        deluxeOrder.setDrinkSize("SMALL");
+        deluxeOrder.printItemizedList();
     }
 }
