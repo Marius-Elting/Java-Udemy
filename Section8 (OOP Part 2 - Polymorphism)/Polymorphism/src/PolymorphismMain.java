@@ -29,5 +29,7 @@ public class PolymorphismMain {
             movie.watchMovie();
         }
 
+        s.close();
+
     }
 }
